@@ -1,0 +1,508 @@
+@import "/css/reset.css";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap');
+
+/* 
+font-family: 'DM Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
+ */
+
+:root {
+    --black: #171718;
+    --black-border: #26292d;
+    --white: #fff;
+    --blue:  rgb(0 171 194);
+    --yellow: rgb(255 200 45);
+
+    /* Ligh mode */
+    --page-bg: var(--white);
+    --text-color: var(--black);
+
+    --tittle-1: var(--blue);
+    --pcolor: rgb(0, 98, 113);
+
+
+    --project-card-bg: var(--white);
+    --project-card-text: var(--black);
+
+    --box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.25);
+}
+
+.dark {
+
+    /* Dark Mode */
+    --page-bg: #252526;
+    --text-color: var(--white);
+
+    --tittle-1: var(--yellow);
+    --pcolor: var(--yellow);
+
+    --project-card-bg: var(--black);
+    --project-card-text: var(--white);
+
+    --box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.8);
+}
+
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: -0.5px;
+
+    /* Light mode */
+    background-color: var(--page-bg);
+    color: var(--text-color)
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1200px;
+}
+
+/* Навигация NAV */
+
+.nav {
+    padding: 20px 0;
+    background-color: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black-border);
+    letter-spacing: normal;
+}
+
+.nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* до этого было space-beetween, убрали из за DarkMode, чтобы он при мобильной веерсии стоял позади */
+    column-gap: 30px;
+    row-gap: 20px; /* для мобильной версии, чтобы было растояние между ними вертикально */
+    flex-wrap: wrap; /* кокрас таки и выстраивает их вертикально для мобильной версии */
+}
+
+.logo {
+    margin-right: auto; /* до этого такого кода не было, убрали из за DarkMode, указав flex-end все переместилось на право, чтобы убрать лого в левую сторону прописали данный код */
+    color: var(--yellow);
+    font-size: 24px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.KZ {
+    margin: -6px;
+    padding-right: 14px;
+    padding-left: 15px;
+}
+
+.logo strong {
+    font-weight: 700;
+}
+
+.nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    column-gap: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    list-style-type: none; /* убрали маркеры с li */
+    padding-left: 0;
+}
+
+.nav-list__link {
+    color: var(--white);
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+}
+
+.nav-list__link:hover {
+    opacity: 0.8;
+}
+
+.nav-list__link--active { /* для линии под link */
+    position: relative; /* это чтобы он сразу появился под li, а то искали бы по всей страницы */
+}
+
+.nav-list__link--active::before { /* для линии под link */
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--blue);
+}
+
+
+/* Dark Mode */
+
+.dark-mode-btn {
+    order: 1; /* по умолчанию у всех тегов order равен нулю 0, указав тут 1 мы перебросили DarkMode в конец (в самую правую сторону) */
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    width: 51px;
+    height: 26px;
+    border-radius: 50px;
+    background-color: #272727;
+
+}
+
+.dark-mode-btn::before {
+    content: "";
+
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+    background-color: var(--white);
+
+    transition: left 0.2s ease-in;
+}
+.dark-mode-btn--active::before {
+    left: 26px;
+}
+
+.dark-mode-btn__icon {
+    position: relative;
+    z-index: 9;
+}
+
+/* Header */
+
+.header {
+    padding: 40px 0;
+    min-height: 695px;
+    margin-bottom: 40px;
+
+    background-color: var(--black);
+    color: var(--white);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background-image: url(/Images/Abstract.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+}
+
+.header__wrapper {
+    padding: 0 15px;
+    max-width: 630px;
+}
+
+.header__tittle { 
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.header__tittle strong {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.header__tittle em {
+    font-style: normal;
+    color: var(--yellow);
+}
+
+.header__text {
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 1.333;
+}
+
+.header__text p + p { /* Если у тэга p будет еще тэг p (после него) то для них будет следующий стиль. У каждого кроме первого*/
+    margin-top: 1em;
+}
+
+/* BTN */
+
+.btn {
+    display: inline-block;
+    height: 48px;
+    padding: 12px 28px;
+    border-radius: 5px;
+    color: var(--white);
+    letter-spacing: 0.15px;
+    font-size: 16px;
+    font-weight: 500px;
+    background-image: linear-gradient(90deg, rgb(0 171 194), rgb(255 200 45));
+    transition: opacity 0.2s ease-in;
+}
+
+.btn:hover {
+    opacity: 0.8;
+    background-image: linear-gradient(45deg, rgb(0 171 194), rgb(11, 70, 208));
+}
+
+.btn:active {
+    position: relative;
+    top: 3px;
+}
+
+
+/* Projects */
+
+.section {
+    padding: 70px 0;
+}
+
+.tittle-1 {
+    margin-bottom: 60px;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--tittle-1);
+    text-align: center;
+}
+
+.projects {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 30px;
+}
+
+.project {
+    max-width: 370px;
+    background-color: var(--project-card-bg);
+    box-shadow: var(--box-shadow);
+    border-radius: 13px;
+}
+
+.project__img {
+    border-radius: 10px;b
+}
+
+.project__tittle {
+
+    padding: 15px 20px 25px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--project-card-text);
+    text-align: center;
+}
+
+/* Footer */
+
+.footer {
+    
+    margin-top: auto; /* для того, чтобы footer прилип к хэдору когда переходишь по страницам Skills и Contact */
+    padding: 60px 0 50px;
+    background-color: var(--black);
+    color: var(--white);
+
+}
+
+.footer__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 27px;
+}
+
+.social {
+    display: flex;
+    column-gap: 30px;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 16px;
+}
+
+/* Project2 */
+
+.project-details {
+    margin: 0 auto;
+    max-width: 865px;
+
+    display: flexbox;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.project-details__cover {
+    max-width: 100%;
+    margin-bottom: 40px;
+
+    filter: drop-shadow(0px 5px 35px rgba(0, 0, 0, 0.25));
+    border-radius: 10px;
+}
+.project-details__desc {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 30px;
+    line-height: 1.3;
+}
+.btn-outline {
+
+    height: 48px;
+    padding: 12px 20px;
+
+    border-radius: 5px;
+    border: 2px solid var(--black);
+    color: var(--black);
+    background-color: var(--white);
+    transition: opacity 0.2s ease-in;
+
+}
+
+.btn-outline:hover {
+    opacity: 0.8;
+}
+
+.btn-outline:active {
+    position: relative;
+    top: 3px;
+}
+
+/* Skills Page */
+
+.content-list {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 570px;
+    text-align: center;
+}
+.tittle-2 {
+    margin-bottom: 20px;
+    font-size: 45px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.content-list p {
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    line-height: 1.5;
+    color: var(--pcolor);
+}
+
+.content-list p + p {
+    margin-top: 0.5rem;
+}
+
+.content-list__item {
+    margin-bottom: 20px;
+}
+
+.content-list__item p {
+    color: var(--pcolor);
+}
+
+/* ContactPage */
+
+.content-list a {
+    color: var(--pcolor);
+}
+
+@media (max-width: 620px) {
+
+    /* Header */
+    .header {
+        min-height: unset;
+    }
+
+    .header__tittle {
+        font-size: 30px;
+    }
+
+    .header__tittle strong {
+        font-size: 40px;
+    }
+
+    /* General */
+    .section {
+        padding: 40px 0;
+    }
+
+    .tittle-1 {
+        margin-bottom: 30px;
+        font-size: 40px;
+    }
+
+    .projects {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+    /* Prjects */
+    .project__tittle {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 40px 0 38px;
+    }
+
+    /* Social */
+    .social {
+        column-gap: 20px;
+    }
+
+    .footer__wrapper {
+        row-gap: 20px;
+    }
+
+    .social__item {
+        width: 29px;
+    }
+
+    .tittle-2 {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    /* Content List */
+    .content-list__item {
+        font-size: 16px;
+    }
+
+    /* Project2 */
+    .project-details__desc {
+        margin-bottom: 20px;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    /* Nav DarkMode */
+
+    .nav-row {
+        justify-content: space-between;
+    }
+
+    .dark-mode-btn {
+        order: 0;
+    }
+}
+
+
+
+
